@@ -1,14 +1,18 @@
 language: node.js
 node_js:
-- 10
+  - 10
+
 before_install:
-- npm install -g @angular/cli
-- export CHROME_BIN=google-chrome
-- export DISPLAY=:99.0
+  - npm install -g @angular/cli
+  - export CHROME_BIN=google-chrome
+  - export DISPLAY=:99.0
+
 install: npm install
+
 branches:
   only:
   - master
+
 deploy:
   skip_cleanup: true
   provider: heroku
