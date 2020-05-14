@@ -18,4 +18,4 @@ deploy:
   provider: heroku
   app: tv-days
   api_key:
-    secure: 09173705-3ce1-436d-9adc-397f17148dcf
+    secure: "09173705-3ce1-436d-9adc-397f17148dcf"
