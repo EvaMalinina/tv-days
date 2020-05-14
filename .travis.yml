@@ -1,21 +1,17 @@
 language: node.js
 node_js:
-  - 10
-
+- 10
 before_install:
-  - npm install -g @angular/cli
-  - export CHROME_BIN=google-chrome
-  - export DISPLAY=:99.0
-
+- npm install -g @angular/cli
+- export CHROME_BIN=google-chrome
+- export DISPLAY=:99.0
 install: npm install
-
 branches:
   only:
   - master
-
 deploy:
   skip_cleanup: true
   provider: heroku
   app: tv-days
   api_key:
-    secure: "09173705-3ce1-436d-9adc-397f17148dcf"
+    secure: s/iKhfbaHgD4oxcg5z3zkgqWsrmFH+RHwjC1beVju0+sLTAchn2f8Ff6xpMl6ZMHDaaRwiJhcdJjk/BdBvePuuYasHOwpnhgBAc7EAuQOx8c31yshZnMXeLLC2OP91mxpDUZ7QmDXa+sPoQITtAsfgyn2858y3rwaeAsyGHAaVtWj26CGy89XamKYxoGVrUTsdbWGd8pQz36QMnN+4jH+5256ZdDqqgvNdtmnO8kno8LGFiR4EEZGYet545x7jsepVSYux6TpljPqT9FL45EGZuAOUS0351038iClHepzqF3CSQkLm2KD6pnHGICzo+0HZ79ZyRwEjEzxTiSZSfCqT3O513T6XDqCha0beneyThzfvN5WoZGWlEnfuVt5OD9mpH0Ann5zw3593bpChErnf6xP5RvO2DRIA3/BC3UE0yerHlyy2IPfQgpESnf2mVch12xcsJ1hVdBtFpvv600bU6GdPpI6/H/2yI2jEp6dIKRMdTQCs/ZxxovvYrdRuEMMcglFEc/sfbSTx7v04gWURxTCvkfnVg6YKgmsJdxUugAIs/JSjdGcg3JHjk0LPD7vQ9wsc7asbpETkn96juyyw6diSQOeL5OSJGXlFo/VAI/MbcIQhNzhKMhlR+VVJJLcE8yCoZQYRlXXKXP9IS8+NHqrzWp+r4Zw73ttIQr7MI=
