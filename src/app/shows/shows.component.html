@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-selection-list class="shows">
+    <div *ngFor="let show of shows"
+         class="shows__item">
+      <mat-card>
+        <img mat-card-image src="{{show.image.medium}}" alt="film banner">
+        <mat-card-header>
+          <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="shows__info">
+          <span>
+            {{show.language}}
+          </span>
+          <span>
+            <mat-icon>star_half</mat-icon>{{ show.rating.average}}
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </mat-selection-list>
+</div>
+

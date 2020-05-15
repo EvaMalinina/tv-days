@@ -1,0 +1,55 @@
+@import "../../variables";
+
+.footer {
+  background-color: $green;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  &__socials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  &__info a {
+    text-decoration: underline;
+  }
+}
+
+.socials {
+  display: flex;
+
+  &__item {
+    margin-right: 5%;
+    width: 30px;
+    height: 30px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+  }
+
+  &__link.youtube {
+    background-image: url("https://cdn.pixabay.com/photo/2018/05/27/22/48/social-3434840_960_720.png");
+  }
+
+  &__link.insta {
+    background-image: url("https://cdn.pixabay.com/photo/2017/10/29/01/24/social-networking-icon-2898674_960_720.png");
+  }
+
+  &__link.fb {
+    background-image: url("https://cdn.pixabay.com/photo/2018/05/27/22/48/social-3434836_960_720.png");
+  }
+ }
