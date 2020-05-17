@@ -1,12 +1,20 @@
 <div class="container">
-  <mat-selection-list class="shows">
-    <div *ngFor="let show of shows"
+  <mat-selection-list class="shows"
+                      [flickity]="{cellAlign: 'left',
+                                   freeScroll: true,
+                                   wrapAround: true,
+                                   autoplay: true,
+                                   pageDots: false}">
+    <div *ngFor="let show of shows" [flickityChild]
          class="shows__item">
       <mat-card>
-        <img mat-card-image src="{{show.image.medium}}" alt="film banner">
-        <mat-card-header>
-          <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
-        </mat-card-header>
+        <img mat-card-image src="{{show.image.original}}"
+                            alt="film banner"
+                            class="shows__img"
+        >
+
+        <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
+
         <mat-card-content class="shows__info">
           <span>
             {{show.language}}

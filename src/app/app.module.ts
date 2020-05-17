@@ -12,7 +12,8 @@ import { MatListModule } from "@angular/material/list";
 import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { FilterPipeModule } from "./Pipe/searchShow.module";
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
+import { FlickityModule } from "ngx-flickity";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {FormsModule} from "@angular/forms";
     MatListModule,
     MatCardModule,
     FilterPipeModule,
-    FormsModule
+    FormsModule,
+    FlickityModule
   ],
   providers: [],
   bootstrap: [AppComponent]
