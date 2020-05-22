@@ -7,8 +7,12 @@
       </div>
       <div class="header__search">
         <div class="search">
-          <input matInput class="search__input" placeholder="H world" value="show to search">
-          <mat-icon class="search__icon">youtube_searched_for</mat-icon>
+          <input matInput class="search__input" placeholder="H world" value="show to search"
+                 (keydown.enter)="searchTerm$.next($event.target.value)"
+          >
+          <a routerLink="/found-shows">
+            <mat-icon class="search__icon">youtube_searched_for</mat-icon>
+          </a>
         </div>
       </div>
     </div>

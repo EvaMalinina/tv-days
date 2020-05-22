@@ -14,6 +14,8 @@ import { MatCardModule } from "@angular/material/card";
 import { FilterPipeModule } from "./Pipe/searchShow.module";
 import { FormsModule } from "@angular/forms";
 import { FlickityModule } from "ngx-flickity";
+import { FoundShowsComponent } from './found-shows/found-shows.component';
+import { MatInputModule } from "@angular/material/input";
 
 
 @NgModule({
@@ -21,20 +23,22 @@ import { FlickityModule } from "ngx-flickity";
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ShowsComponent
+    ShowsComponent,
+    FoundShowsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    FilterPipeModule,
-    FormsModule,
-    FlickityModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatListModule,
+        MatCardModule,
+        FilterPipeModule,
+        FormsModule,
+        FlickityModule,
+        MatInputModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

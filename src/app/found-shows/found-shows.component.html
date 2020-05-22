@@ -1,0 +1,45 @@
+<div class="found-shows">
+  <div class="container container_column">
+    <p>found-shows works!</p>
+
+    <input
+      (keydown.enter)="searchTerm$.next($event.target.value)">
+
+
+    <ul *ngIf="result" class="results">
+      <p>HOORAY THERE R FOUND SHOWS</p>
+      <mat-selection-list class="shows"
+                          [flickity]="{cellAlign: 'left',
+                                   freeScroll: true,
+                                   wrapAround: true,
+                                   pageDots: false,
+                                   prevNextButtons: false}">
+<!--        *ngFor="let result of results"-->
+        <div [flickityChild]
+             class="shows__item">
+          <mat-card>
+            <div class="shows__img-wrap">
+              <img mat-card-image src="{{result.image.medium}}"
+                   alt="show banner"
+                   class="shows__img"
+              >
+            </div>
+
+            <mat-card-title class="shows__name">{{result.name}}</mat-card-title>
+
+            <mat-card-content class="shows__info">
+          <span>
+            {{result.language}}
+          </span>
+              <span>
+            <mat-icon>star_half</mat-icon>{{ result.rating.average}}
+          </span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+      </mat-selection-list>
+    </ul>
+  </div>
+</div>
+

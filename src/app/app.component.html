@@ -22,15 +22,12 @@
   }
 
   .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
+    min-height: calc(100vh - 70px);
   }
 </style>
-
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div class="content">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>
+
