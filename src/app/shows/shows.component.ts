@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ShowService } from "../Services/shows.service";
 import { Show } from "../Models/show";
 import { IShow } from "../Models/show.model";
+import {log} from "util";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-shows',
@@ -20,9 +22,26 @@ export class ShowsComponent implements OnInit {
   actions: IShow[];
   bestRatesShows: IShow[];
 
-  show: IShow = new Show(  '', '', '',
-                    '', [], {average: ''},
-                      {medium: '', original: ''});
+  show: IShow = new Show(
+    {imdb: '', thetvdb: '', tvrage: '' },
+    [],
+    '',
+    { medium: '', original: '' },
+    '',
+    '',
+    {
+      country: { name: '', code: '', timezone: '' },
+      id: '',
+      name: ''
+    },
+    '',
+    '',
+    { average: '' },
+    '',
+    { days: [], time: '' },
+    '', '', '', '',
+    '', '', '');
+
   searchInput: string;
 
 
@@ -31,25 +50,16 @@ export class ShowsComponent implements OnInit {
   ngOnInit(): void {
     this.showService.lists.subscribe(data => {
 
-      // const list = [];
-      // Object.keys(data).forEach(function (prop) {
-      //   const val = data[prop];
-      //   list.push(val);
-      //
-      // })
       this.shows = data;
-      console.log('this.shows 1', this.shows)
       // this.listComedies();
       // this.listDramas();
       // this.listThrillers();
       // this.listActions();
-      // this.listBestRatesShows();
+      this.listBestRatesShows();
     });
 
     this.listShows();
-    console.log('listShows()', this.shows)
   }
-
 
   listShows() {
     this.showService.listShows();
@@ -57,25 +67,32 @@ export class ShowsComponent implements OnInit {
 
   listBestRatesShows() {
     let bestRatesShows = [];
-    for ( let bestRateShow of this.shows) {
-      let rate = bestRateShow.rating.average;
-      if ( +rate >= 8.5 ){
-        bestRatesShows.push(bestRateShow);
-        this.bestRatesShows = bestRatesShows;
+    for (let i in this.shows) {
+      for (let [key, val] of Object.entries(this.shows[i])) {
+        if (key === 'rating' && +val['average'] >= 8.5) {
+          bestRatesShows.push(this.shows[i])
+        }
       }
     }
   }
 
   listComedies() {
     let comedies = [];
-    for ( let comedy of this.shows) {
-      for ( let genre of comedy.genres) {
-        if ( genre === 'Comedy') {
-          comedies.push(comedy);
-          this.comedies = comedies;
-        }
-      }
-    }
+    // for ( let comedy of this.shows) {
+    //   for ( let genre of comedy.genres) {
+    //     if ( genre === 'Comedy') {
+    //       comedies.push(comedy);
+    //       this.comedies = comedies;
+    //     }
+    //   }
+    // }
+    // for (let i in this.shows) {
+    //   for (let [key, val] of Object.entries(this.shows[i])) {
+    //     if (key === 'genres' && val === 'Comedy') {
+    //       comedies.push(this.shows[i])
+    //     }
+    //   }
+    // }
   }
 
   listDramas() {
@@ -109,9 +126,5 @@ export class ShowsComponent implements OnInit {
         }
       }
     }
-  }
-
-  findAShow(param) {
-
   }
 }

@@ -45,28 +45,30 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <div *ngFor="let bestRateShow of bestRatesShows" [flickityChild]
-           class="shows__item">
-        <mat-card>
-          <div class="shows__img-wrap">
-            <img mat-card-image src="{{bestRateShow.image.medium}}"
-                 alt="show banner"
-                 class="shows__img"
-            >
-          </div>
+      <ng-container *ngIf="shows">
+        <div *ngFor="let bestRateShow of bestRatesShows" [flickityChild]
+             class="shows__item">
+          <mat-card>
+            <div class="shows__img-wrap">
+              <img mat-card-image src="{{bestRateShow.image.medium}}"
+                   alt="show banner"
+                   class="shows__img"
+              >
+            </div>
 
-          <mat-card-title class="shows__name">{{bestRateShow.name}}</mat-card-title>
+            <mat-card-title class="shows__name">{{bestRateShow.name}}</mat-card-title>
 
-          <mat-card-content class="shows__info">
+            <mat-card-content class="shows__info">
           <span>
             {{bestRateShow.language}}
           </span>
-            <span>
+              <span>
             <mat-icon>star_half</mat-icon>{{ bestRateShow.rating.average}}
           </span>
-          </mat-card-content>
-        </mat-card>
-      </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
 
     </mat-selection-list>
   </div>

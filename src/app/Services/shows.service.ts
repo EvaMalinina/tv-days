@@ -14,7 +14,7 @@ import { Show } from '../Models/show';
 export class ShowService {
   baseUrl = 'http://api.tvmaze.com/';
   queryUrl: string = 'singlesearch/shows?q=';
-  moviesList: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  private moviesList: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor( private http: HttpClient ) { }
 
@@ -44,10 +44,7 @@ export class ShowService {
     console.log('term', term)
     return this.http
       .get<Show[]>(this.baseUrl + this.queryUrl + term)
-      // .pipe(
-      //   // map(res =>  console.log('term', res))
-      //   map(shows => (shows) ? shows : [])
-      // )
+
       .subscribe( res => {
         console.log('res searchEntries', res)
         let rer = [res];

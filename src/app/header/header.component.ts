@@ -16,7 +16,7 @@ export class HeaderComponent {
   searchTerm$ = new Subject<string>();
 
   constructor(private showService: ShowService) {
-    this.showService.search(this.searchTerm$)
+    this.showService.searchEntries(this.searchTerm$)
       // .subscribe(result => {
       //   this.result = result;
       // });
