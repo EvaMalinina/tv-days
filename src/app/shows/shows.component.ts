@@ -2,14 +2,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ShowService } from "../Services/shows.service";
 import { Show } from "../Models/show";
 import { IShow } from "../Models/show.model";
-import {log} from "util";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-shows',
   templateUrl: './shows.component.html',
   styleUrls: ['./shows.component.scss'],
-  providers: [ ShowService ],
   encapsulation: ViewEncapsulation.None,
 })
 
@@ -22,40 +19,35 @@ export class ShowsComponent implements OnInit {
   actions: IShow[];
   bestRatesShows: IShow[];
 
-  show: IShow = new Show(
-    {imdb: '', thetvdb: '', tvrage: '' },
-    [],
-    '',
-    { medium: '', original: '' },
-    '',
-    '',
-    {
-      country: { name: '', code: '', timezone: '' },
-      id: '',
-      name: ''
-    },
-    '',
-    '',
-    { average: '' },
-    '',
-    { days: [], time: '' },
-    '', '', '', '',
-    '', '', '');
+  // show: IShow = new Show(
+  //   {imdb: '', thetvdb: '', tvrage: '' },
+  //   [],
+  //   '',
+  //   { medium: '', original: '' },
+  //   '',
+  //   '',
+  //   {
+  //     country: { name: '', code: '', timezone: '' },
+  //     id: '',
+  //     name: ''
+  //   },
+  //   '',
+  //   '',
+  //   { average: '' },
+  //   '',
+  //   { days: [], time: '' },
+  //   '', '', '', '',
+  //   '', '', '');
 
   searchTerm$: string;
 
 
-  constructor( private showService: ShowService) {
-    // this.searchTerm$.subscribe( value => {
-    //   this.showService.searchEntries(value);
-    // })
-  }
+  constructor( private showService: ShowService) { }
 
   ngOnInit(): void {
     this.showService.lists.subscribe(data => {
 
       this.shows = data;
-      console.log('data a', data)
       // this.listComedies();
       // this.listDramas();
       // this.listThrillers();
@@ -72,14 +64,10 @@ export class ShowsComponent implements OnInit {
   }
 
   listBestRatesShows() {
-    let bestRatesShows = [];
-    for (let i in this.shows) {
-      for (let [key, val] of Object.entries(this.shows[i])) {
-        if (key === 'rating' && +val['average'] >= 8.5) {
-          bestRatesShows.push(this.shows[i])
-        }
-      }
-    }
+    let bestRatesShows = this.shows.filter(function(el) {
+      return +el.rating.average > 8.5;
+    })
+    this.bestRatesShows = bestRatesShows;
   }
 
   listComedies() {

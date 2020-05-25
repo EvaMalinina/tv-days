@@ -7,7 +7,7 @@ import { Subject } from "rxjs";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ ShowService ]
+  // providers: [ ShowService ]
 })
 
 export class HeaderComponent {
@@ -23,6 +23,6 @@ export class HeaderComponent {
   }
 
   searchShow(name) {
-      this.showService.searchEntries(name);
+    this.showService.searchEntries(name);
   }
 }

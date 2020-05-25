@@ -13,7 +13,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { FormsModule } from "@angular/forms";
 import { FlickityModule } from "ngx-flickity";
-import { FoundShowsComponent } from './found-shows/found-shows.component';
 import { MatInputModule } from "@angular/material/input";
 
 
@@ -23,7 +22,6 @@ import { MatInputModule } from "@angular/material/input";
     HeaderComponent,
     FooterComponent,
     ShowsComponent,
-    FoundShowsComponent
   ],
     imports: [
         BrowserModule,
