@@ -13,12 +13,16 @@ import { Subject } from "rxjs";
 export class HeaderComponent {
 
   public result;
-  searchTerm$ = new Subject<string>();
+  // searchTerm$ = new Subject<string>();
 
   constructor(private showService: ShowService) {
-    this.showService.searchEntries(this.searchTerm$)
+    // this.showService.searchEntries(this.searchTerm$)
       // .subscribe(result => {
       //   this.result = result;
       // });
+  }
+
+  searchShow(name) {
+      this.showService.searchEntries(name);
   }
 }

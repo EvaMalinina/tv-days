@@ -8,9 +8,9 @@
       <div class="header__search">
         <div class="search">
           <input matInput class="search__input" placeholder="H world" value="search"
-                 (keydown.enter)="searchTerm$.next($event.target.value)"
+                 (keydown.enter)="searchShow($event.target.value)"
           >
-          <a href="#" (click)="searchTerm$.next()">
+          <a href="#">
             <mat-icon class="search__icon">youtube_searched_for</mat-icon>
           </a>
         </div>

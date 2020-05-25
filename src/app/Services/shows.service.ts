@@ -6,6 +6,7 @@ import { debounceTime } from "rxjs/operators";
 import { distinctUntilChanged } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
 import { Show } from '../Models/show';
+import {IShow} from "../Models/show.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { Show } from '../Models/show';
 export class ShowService {
   baseUrl = 'http://api.tvmaze.com/';
   queryUrl: string = 'singlesearch/shows?q=';
-  private moviesList: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  // [new Show()]
+  private moviesList: BehaviorSubject<IShow[]> = new BehaviorSubject<IShow[]>(null);
 
   constructor( private http: HttpClient ) { }
 
@@ -41,9 +43,9 @@ export class ShowService {
   }
 
   searchEntries(term) {
-    console.log('term', term)
+    // console.log('term', term)
     return this.http
-      .get<Show[]>(this.baseUrl + this.queryUrl + term)
+      .get<IShow[]>(this.baseUrl + this.queryUrl + term)
 
       .subscribe( res => {
         console.log('res searchEntries', res)
@@ -51,7 +53,5 @@ export class ShowService {
         console.log('rer searchEntries', rer)
         this.moviesList.next(rer)
       })
-
   }
-
 }

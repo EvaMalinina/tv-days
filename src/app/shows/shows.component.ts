@@ -42,15 +42,20 @@ export class ShowsComponent implements OnInit {
     '', '', '', '',
     '', '', '');
 
-  searchInput: string;
+  searchTerm$: string;
 
 
-  constructor( private showService: ShowService) { }
+  constructor( private showService: ShowService) {
+    // this.searchTerm$.subscribe( value => {
+    //   this.showService.searchEntries(value);
+    // })
+  }
 
   ngOnInit(): void {
     this.showService.lists.subscribe(data => {
 
       this.shows = data;
+      console.log('data a', data)
       // this.listComedies();
       // this.listDramas();
       // this.listThrillers();
@@ -60,6 +65,7 @@ export class ShowsComponent implements OnInit {
 
     this.listShows();
   }
+
 
   listShows() {
     this.showService.listShows();
