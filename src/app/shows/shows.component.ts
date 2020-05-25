@@ -1,19 +1,19 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ShowService} from "../Services/shows.service";
-import {Show} from "../Models/show";
-import {IShow} from "../Models/show.model";
-import {FilterPipeModule} from "../Pipe/searchShow.module";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ShowService } from "../Services/shows.service";
+import { Show } from "../Models/show";
+import { IShow } from "../Models/show.model";
 
 @Component({
   selector: 'app-shows',
   templateUrl: './shows.component.html',
   styleUrls: ['./shows.component.scss'],
-  providers: [ ShowService, FilterPipeModule ],
+  providers: [ ShowService ],
   encapsulation: ViewEncapsulation.None,
 })
-export class ShowsComponent implements OnInit {
 
-  shows: IShow[] = [];
+export class ShowsComponent implements OnInit {
+  // shows: IShow[] = [];
+  shows: IShow[];
   comedies: IShow[];
   dramas: IShow[];
   thrillers: IShow[];
@@ -30,22 +30,24 @@ export class ShowsComponent implements OnInit {
 
   ngOnInit(): void {
     this.showService.lists.subscribe(data => {
-      console.log('data', data)
-      const list = [];
+
+      // const list = [];
       // Object.keys(data).forEach(function (prop) {
       //   const val = data[prop];
       //   list.push(val);
       //
       // })
       this.shows = data;
+      console.log('this.shows 1', this.shows)
       // this.listComedies();
       // this.listDramas();
       // this.listThrillers();
       // this.listActions();
-      this.listBestRatesShows();
+      // this.listBestRatesShows();
     });
 
     this.listShows();
+    console.log('listShows()', this.shows)
   }
 
 

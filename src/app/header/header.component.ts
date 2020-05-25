@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ShowService } from "../Services/shows.service";
-import { FilterPipeModule } from "../Pipe/searchShow.module";
 import { Subject } from "rxjs";
 
 @Component({
@@ -8,7 +7,7 @@ import { Subject } from "rxjs";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ FilterPipeModule, ShowService ]
+  providers: [ ShowService ]
 })
 
 export class HeaderComponent {
@@ -18,9 +17,8 @@ export class HeaderComponent {
 
   constructor(private showService: ShowService) {
     this.showService.search(this.searchTerm$)
-      .subscribe(result => {
-        this.result = result;
-      });
+      // .subscribe(result => {
+      //   this.result = result;
+      // });
   }
-
 }

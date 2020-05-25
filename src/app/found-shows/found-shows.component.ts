@@ -23,8 +23,8 @@ export class FoundShowsComponent {
 
   constructor(private showService: ShowService) {
     this.showService.search(this.searchTerm$)
-      .subscribe(result => {
-        this.result = result;
-      });
+      // .subscribe(result => {
+      //   this.result = result;
+      // });
   }
 }

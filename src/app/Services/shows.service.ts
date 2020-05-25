@@ -25,7 +25,6 @@ export class ShowService {
   listShows() {
     this.http
       .get<Show[]>(`${this.baseUrl}shows`)
-      // .pipe(map(shows => (shows) ? shows : []))
       .subscribe( res => {
         this.moviesList.next(res)
       }
@@ -33,15 +32,16 @@ export class ShowService {
   }
 
   search(terms: Observable<string>) {
-    return terms.pipe(
-      debounceTime(400),
-      distinctUntilChanged(),
-      switchMap(term => this.searchEntries(term))
-    )
+    // return terms.pipe(
+    //   debounceTime(400),
+    //   distinctUntilChanged(),
+    //   switchMap(term => this.searchEntries(term))
+    // )
+    this.searchEntries(terms)
   }
 
   searchEntries(term) {
-    console.log(term)
+    console.log('term', term)
     return this.http
       .get<Show[]>(this.baseUrl + this.queryUrl + term)
       // .pipe(
@@ -49,9 +49,9 @@ export class ShowService {
       //   map(shows => (shows) ? shows : [])
       // )
       .subscribe( res => {
-        console.log(res)
+        console.log('res searchEntries', res)
         let rer = [res];
-        console.log(rer)
+        console.log('rer searchEntries', rer)
         this.moviesList.next(rer)
       })
 
