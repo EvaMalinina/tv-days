@@ -17,11 +17,12 @@ export class Show implements IShow {
   rating = { average: '' };
   runtime = '';
   schedule = { days: [], time: '' };
-  status = status;
+  status = '';
   summary = '';
   type = '';
   updated = '';
   url = '';
   webChannel = '';
   weight = '';
+  isSeen = false;
 }

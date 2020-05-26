@@ -14,6 +14,8 @@ import { MatCardModule } from "@angular/material/card";
 import { FormsModule } from "@angular/forms";
 import { FlickityModule } from "ngx-flickity";
 import { MatInputModule } from "@angular/material/input";
+import { SeenShowsComponent } from './seen-shows/seen-shows.component';
+import { SheduleComponent } from './shedule/shedule.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { MatInputModule } from "@angular/material/input";
     HeaderComponent,
     FooterComponent,
     ShowsComponent,
+    SeenShowsComponent,
+    SheduleComponent,
   ],
     imports: [
         BrowserModule,

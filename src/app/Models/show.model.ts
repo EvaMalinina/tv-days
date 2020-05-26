@@ -22,4 +22,5 @@ export interface IShow {
   url?: string;
   webChannel?: string;
   weight?: string;
+  isSeen?: boolean;
 }

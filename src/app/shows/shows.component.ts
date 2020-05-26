@@ -11,36 +11,15 @@ import { IShow } from "../Models/show.model";
 })
 
 export class ShowsComponent implements OnInit {
-  // shows: IShow[] = [];
+
   shows: IShow[];
   comedies: IShow[];
   dramas: IShow[];
   thrillers: IShow[];
   actions: IShow[];
   bestRatesShows: IShow[];
-
-  // show: IShow = new Show(
-  //   {imdb: '', thetvdb: '', tvrage: '' },
-  //   [],
-  //   '',
-  //   { medium: '', original: '' },
-  //   '',
-  //   '',
-  //   {
-  //     country: { name: '', code: '', timezone: '' },
-  //     id: '',
-  //     name: ''
-  //   },
-  //   '',
-  //   '',
-  //   { average: '' },
-  //   '',
-  //   { days: [], time: '' },
-  //   '', '', '', '',
-  //   '', '', '');
-
-  searchTerm$: string;
-
+  isSeen: boolean;
+  // subscription: Subscription
 
   constructor( private showService: ShowService) { }
 
@@ -48,11 +27,11 @@ export class ShowsComponent implements OnInit {
     this.showService.lists.subscribe(data => {
 
       this.shows = data;
-      // this.listComedies();
-      // this.listDramas();
-      // this.listThrillers();
-      // this.listActions();
       this.listBestRatesShows();
+      this.listComedies();
+      this.listDramas();
+      this.listThrillers();
+      this.listActions();
     });
 
     this.listShows();
@@ -71,54 +50,50 @@ export class ShowsComponent implements OnInit {
   }
 
   listComedies() {
-    let comedies = [];
-    // for ( let comedy of this.shows) {
-    //   for ( let genre of comedy.genres) {
-    //     if ( genre === 'Comedy') {
-    //       comedies.push(comedy);
-    //       this.comedies = comedies;
-    //     }
-    //   }
-    // }
-    // for (let i in this.shows) {
-    //   for (let [key, val] of Object.entries(this.shows[i])) {
-    //     if (key === 'genres' && val === 'Comedy') {
-    //       comedies.push(this.shows[i])
-    //     }
-    //   }
-    // }
+    let comedies = this.shows.filter((el)=> {
+      for (let genre of el.genres) {
+        if (genre == "Comedy") {
+          return el;
+        }
+      }
+    })
+    this.comedies = comedies;
   }
 
   listDramas() {
-    let dramas = [];
-    for ( let drama of this.shows) {
-      for ( let genre of drama.genres) {
-        if ( genre === 'Drama') {dramas.push(drama);
-          this.dramas = dramas;
+    let dramas = this.shows.filter((el)=> {
+      for (let genre of el.genres) {
+        if (genre == "Drama") {
+          return el;
         }
       }
-    }
+    })
+    this.dramas = dramas;
   }
 
   listThrillers() {
-    let thrillers = [];
-    for ( let thriller of this.shows) {
-      for ( let genre of thriller.genres) {
-        if ( genre === 'Thriller') {thrillers.push(thriller);
-          this.thrillers = thrillers;
+    let thrillers = this.shows.filter((el)=> {
+      for (let genre of el.genres) {
+        if (genre == "Thriller") {
+          return el;
         }
       }
-    }
+    })
+    this.thrillers = thrillers;
   }
 
   listActions() {
-    let actions = [];
-    for ( let action of this.shows) {
-      for ( let genre of action.genres) {
-        if ( genre === 'Action') {actions.push(action);
-          this.actions = actions;
+    let actions = this.shows.filter((el) => {
+      for (let genre of el.genres) {
+        if (genre == "Action") {
+          return el;
         }
       }
-    }
+    })
+    this.actions = actions;
+  }
+
+  seenChecked(show) {
+    show.isSeen = !show.isSeen;
   }
 }

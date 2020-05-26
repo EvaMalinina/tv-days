@@ -1,0 +1,42 @@
+<p>shedule works!</p>
+<div class="container container_column">
+  <div class="shows-wrapper">
+    <h3>Shedule</h3>
+    <mat-selection-list class="shows"
+                        [flickity]="{cellAlign: 'left',
+                                   freeScroll: true,
+                                   wrapAround: true,
+                                   autoPlay: true,
+                                   pageDots: false,
+                                   prevNextButtons: false}">
+      <ng-container *ngIf="sheduledShows">
+        <div *ngFor="let show of sheduledShows" [flickityChild]
+             class="shows__item">
+          <a href="#">
+            <mat-card>
+              <div class="shows__img-wrap">
+                <img mat-card-image src="{{show.image.medium}}"
+                     alt="show banner"
+                     class="shows__img"
+                >
+              </div>
+
+              <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
+
+              <mat-card-content class="shows__info">
+                <span>
+                  {{show.language}}
+                </span>
+                <span>
+                  <mat-icon>star_half</mat-icon>{{ show.rating.average}}
+                </span>
+              </mat-card-content>
+            </mat-card>
+          </a>
+        </div>
+      </ng-container>
+
+
+    </mat-selection-list>
+  </div>
+</div>
