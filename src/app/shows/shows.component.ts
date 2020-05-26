@@ -18,6 +18,8 @@ export class ShowsComponent implements OnInit {
   thrillers: IShow[];
   actions: IShow[];
   bestRatesShows: IShow[];
+  checkedShows: IShow[] = [];
+  checkedShowsStorage = JSON.parse(localStorage.getItem("shows"));
   isSeen: boolean;
   // subscription: Subscription
 
@@ -94,6 +96,8 @@ export class ShowsComponent implements OnInit {
   }
 
   seenChecked(show) {
+    this.checkedShows.push(show);
+    localStorage.setItem('shows', JSON.stringify(this.checkedShows));
     show.isSeen = !show.isSeen;
   }
 }

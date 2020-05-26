@@ -50,7 +50,7 @@
                                    pageDots: false,
                                    prevNextButtons: false}">
       <ng-container *ngIf="shows">
-        <div *ngFor="let show of shows">
+        <div *ngFor="let show of checkedShowsStorage">
           <div class="shows__item" *ngIf="show.isSeen" [flickityChild]>
             <a href="#"  >
               <mat-card>
