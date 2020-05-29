@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowService } from "../Services/shows.service";
-import {IShow} from "../Models/show.model";
+import { ISheduledShow } from "../Models/sheduled-show.model";
 
 @Component({
   selector: 'app-shedule',
@@ -9,7 +9,7 @@ import {IShow} from "../Models/show.model";
 })
 export class SheduleComponent implements OnInit {
 
-  sheduledShows: IShow[];
+  sheduledShows: ISheduledShow[];
 
   constructor( private showService: ShowService) { }
 
@@ -21,9 +21,7 @@ export class SheduleComponent implements OnInit {
     this.listSheduledShows();
   }
 
-
   listSheduledShows() {
     this.showService.sheduleShows();
   }
-
 }

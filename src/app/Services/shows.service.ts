@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Show } from '../Models/show';
 import { IShow } from "../Models/show.model";
+import { ISheduledShow } from "../Models/sheduled-show.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ShowService {
   baseUrl = 'http://api.tvmaze.com/';
   queryUrl: string = 'singlesearch/shows?q=';
   private moviesList: BehaviorSubject<IShow[]> = new BehaviorSubject<IShow[]>([new Show()]);
-  private sheduledMovieList: BehaviorSubject<IShow[]> = new BehaviorSubject<IShow[]>([new Show()]);
+  private sheduledMovieList: BehaviorSubject<ISheduledShow[]> = new BehaviorSubject<ISheduledShow[]>(null);
 
   constructor( private http: HttpClient ) { }
 
@@ -35,7 +36,7 @@ export class ShowService {
 
   sheduleShows() {
     this.http
-      .get<Show[]>(`${this.baseUrl}schedule/full`)
+      .get<ISheduledShow[]>(`${this.baseUrl}schedule/full`)
       .subscribe( res => {
           this.sheduledMovieList.next(res)
         }
@@ -47,10 +48,8 @@ export class ShowService {
       .get<IShow>(this.baseUrl + this.queryUrl + term)
 
       .subscribe( res => {
-        let rer = [res];
-        console.log('rer searchEntries', rer)
-        //??
-        this.moviesList.next(rer)
+        let resInArr = [res];
+        this.moviesList.next(resInArr)
       })
   }
 }

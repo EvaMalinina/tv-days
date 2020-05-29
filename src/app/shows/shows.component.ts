@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ShowService } from "../Services/shows.service";
 import { Show } from "../Models/show";
 import { IShow } from "../Models/show.model";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-shows',
@@ -21,24 +22,30 @@ export class ShowsComponent implements OnInit {
   checkedShows: IShow[] = [];
   checkedShowsStorage = JSON.parse(localStorage.getItem("shows"));
   isSeen: boolean;
-  // subscription: Subscription
+  subscription: Subscription
 
   constructor( private showService: ShowService) { }
 
   ngOnInit(): void {
-    this.showService.lists.subscribe(data => {
+    this.subscription = this.showService.lists.subscribe(data => {
 
       this.shows = data;
-      this.listBestRatesShows();
+      // this.listCheckedShows();
+      // this.listBestRatesShows();
       this.listComedies();
       this.listDramas();
       this.listThrillers();
       this.listActions();
     });
 
+    this.listBestRatesShows();
     this.listShows();
   }
 
+  // listCheckedShows() {
+  //   this.checkedShowsStorage = JSON.parse(localStorage.getItem("shows"));
+  //   console.log( this.checkedShowsStorage)
+  // }
 
   listShows() {
     this.showService.listShows();
@@ -96,8 +103,23 @@ export class ShowsComponent implements OnInit {
   }
 
   seenChecked(show) {
-    this.checkedShows.push(show);
-    localStorage.setItem('shows', JSON.stringify(this.checkedShows));
-    show.isSeen = !show.isSeen;
+    // let arrExist = JSON.parse(localStorage.getItem('shows'));
+
+    // if ( arrExist ) {
+    //   // check for duplication
+    //   this.checkedShows.push(show);
+    //   //
+    // } else {
+      this.checkedShows.push(show);
+      localStorage.setItem('shows', JSON.stringify(this.checkedShows));
+      show.isSeen = !show.isSeen;
+      this.checkedShowsStorage = JSON.parse(localStorage.getItem("shows"));
+
+    // }
+  }
+
+  // ?
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

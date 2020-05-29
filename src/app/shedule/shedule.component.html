@@ -1,7 +1,5 @@
-<p>shedule works!</p>
 <div class="container container_column">
   <div class="shows-wrapper">
-    <h3>Shedule</h3>
     <mat-selection-list class="shows"
                         [flickity]="{cellAlign: 'left',
                                    freeScroll: true,
@@ -14,21 +12,15 @@
              class="shows__item">
           <a href="#">
             <mat-card>
-              <div class="shows__img-wrap">
-                <img mat-card-image src="{{show.image.medium}}"
-                     alt="show banner"
-                     class="shows__img"
-                >
-              </div>
 
               <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
 
               <mat-card-content class="shows__info">
                 <span>
-                  {{show.language}}
+                  {{show.airdate}}
                 </span>
                 <span>
-                  <mat-icon>star_half</mat-icon>{{ show.rating.average}}
+                  {{ show.airtime}}
                 </span>
               </mat-card-content>
             </mat-card>
