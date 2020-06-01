@@ -14,12 +14,12 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { FlickityModule } from 'ngx-flickity';
 import { MatInputModule } from '@angular/material/input';
-import { SeenShowsComponent } from './components/seen-shows/seen-shows.component';
 import { SheduleComponent } from './components/shedule/shedule.component';
 import { ShowInfoComponent } from './components/show-info/show-info.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './Services/loader.service';
 import { LoaderInterceptor } from './Interceptors/loader-interceptor.service';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 
 @NgModule({
@@ -28,10 +28,10 @@ import { LoaderInterceptor } from './Interceptors/loader-interceptor.service';
     HeaderComponent,
     FooterComponent,
     ShowsComponent,
-    SeenShowsComponent,
     SheduleComponent,
     ShowInfoComponent,
     LoaderComponent,
+    ArticlesComponent,
   ],
     imports: [
         BrowserModule,

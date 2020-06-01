@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ShowService } from '../../Services/shows.service';
-import { Show } from '../../Models/show';
+// import { Show } from '../../Models/show';
 import { IShow } from '../../Models/show.model';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-shows',
   templateUrl: './shows.component.html',
   styleUrls: ['./shows.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 
 export class ShowsComponent implements OnInit, OnDestroy {
@@ -40,12 +40,15 @@ export class ShowsComponent implements OnInit, OnDestroy {
         this.listActions();
       }
     });
+
     this.listShows();
 
-    this.subscription2 = this.showService.showInfoSeenListArr.subscribe(data => {
-      console.log('data from listarr', data);
-      this.checkedShows = data;
-    });
+    this.checkedShows = JSON.parse(localStorage.getItem('shows'));
+    // this.subscription2 = this.showService.showInfoSeenListArr.subscribe(data => {
+    //   console.log('data from listarr', data);
+    //   // localstorage get data
+    //   this.checkedShows = data;
+    // });
   }
 
   listShows() {
@@ -109,6 +112,6 @@ export class ShowsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.subscription2.unsubscribe();
+    // this.subscription2.unsubscribe();
   }
 }

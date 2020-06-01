@@ -1,15 +1,36 @@
 .shows-wrapper {
   padding-top: 30px;
+  align-items: center;
 }
-
 
 .shows {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
 
   &__item {
     width: 100%;
-    max-width: 800px;
+    min-width: 800px;
     margin-bottom: 20px;
+    min-height: 50px;
+  }
+
+  &__name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  &__info {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
   }
 }

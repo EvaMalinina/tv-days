@@ -1,6 +1,6 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+// import { BehaviorSubject } from 'rxjs';
 import { Show } from '../Models/show';
 import { IShow } from '../Models/show.model';
 import { ISheduledShow } from '../Models/sheduled-show.model';
@@ -14,12 +14,12 @@ export class ShowService {
   baseUrl = 'http://api.tvmaze.com/';
   queryUrl = 'singlesearch/shows?q=';
   private moviesList: EventEmitter<IShow[]> = new EventEmitter<IShow[]>();
-  private sheduledMovieList: BehaviorSubject<ISheduledShow[]> = new BehaviorSubject<ISheduledShow[]>(null);
+  // private sheduledMovieList: BehaviorSubject<ISheduledShow[]> = new BehaviorSubject<ISheduledShow[]>(null);
 
   // for seen film
-  private showInfoList: BehaviorSubject<IShow[]> = new BehaviorSubject<IShow[]>(null);
+  // private showInfoList: BehaviorSubject<IShow[]> = new BehaviorSubject<IShow[]>(null);
   // for arr of seen films
-  private checkedShowsStorage: EventEmitter<IShow[]> = new EventEmitter<IShow[]>();
+  // private checkedShowsStorage: EventEmitter<IShow[]> = new EventEmitter<IShow[]>();
 
 
   constructor( private http: HttpClient,
@@ -29,18 +29,18 @@ export class ShowService {
   get lists() {
     return this.moviesList.asObservable();
   }
+  //
+  // get sheduledLists() {
+  //   return this.sheduledMovieList.asObservable();
+  // }
 
-  get sheduledLists() {
-    return this.sheduledMovieList.asObservable();
-  }
+  // get showInfoSeenList() {
+  //   return this.showInfoList.asObservable();
+  // }
 
-  get showInfoSeenList() {
-    return this.showInfoList.asObservable();
-  }
-
-  get showInfoSeenListArr() {
-    return this.checkedShowsStorage.asObservable();
-  }
+  // get showInfoSeenListArr() {
+  //   return this.checkedShowsStorage.asObservable();
+  // }
 
   listShows() {
     this.http
@@ -55,18 +55,21 @@ export class ShowService {
     this.http
       .get<IShow[]>(`${this.baseUrl}shows/${showId}`)
       .subscribe( res => {
-          localStorage.setItem('res', JSON.stringify(res));
-          this.showInfoList.next(res);
-          this.checkedShowsStorage.emit(res);
+          let seenShows = [];
+          seenShows.push(res);
+          localStorage.setItem('res', JSON.stringify(seenShows));
+          // this.showInfoList.next(seenShows);
+          // this.checkedShowsStorage.emit(res);
 
           const showsArr = JSON.parse(localStorage.getItem('shows'));
           if ( showsArr ) {
 
             // filter does not work
-            showsArr.filter((show: IShow) => show.id !== showId);
-            showsArr.push(res);
-            console.log('checkedShowsStorage', showsArr);
-            localStorage.setItem('shows', JSON.stringify(showsArr));
+            let newArr = showsArr.filter((show: IShow) => show.id !== showId);
+            newArr.push(res);
+            console.log('checkedShowsStorage', newArr);
+            localStorage.setItem('shows', JSON.stringify(newArr));
+            // this.checkedShowsStorage.emit(newArr);
           } else {
             const showsArr = [];
             showsArr.push(res);
@@ -83,15 +86,8 @@ export class ShowService {
   }
 
   sheduleShows() {
-    this.http
+    return this.http
       .get<ISheduledShow[]>(`${this.baseUrl}schedule/full`)
-      .subscribe( res => {
-
-          const slicedShedule = res.slice( 0, 20 );
-          this.sheduledMovieList.next(slicedShedule);
-          return slicedShedule;
-        }
-      );
   }
 
   searchEntries(term) {
