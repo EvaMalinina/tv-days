@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,23 +33,25 @@ import { ArticlesComponent } from './components/articles/articles.component';
     LoaderComponent,
     ArticlesComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatListModule,
-        MatCardModule,
-        FormsModule,
-        FlickityModule,
-        MatInputModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    FormsModule,
+    FlickityModule,
+    MatInputModule
+  ],
   providers: [
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     HttpClientModule
   ],
+  exports: [ HeaderComponent, FooterComponent, LoaderComponent ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 
