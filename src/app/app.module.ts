@@ -47,7 +47,8 @@ import { ArticlesComponent } from './components/articles/articles.component';
     ],
   providers: [
     LoaderService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
