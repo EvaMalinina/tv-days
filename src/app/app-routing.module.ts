@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ShowsComponent } from "./shows/shows.component";
-import {SheduleComponent} from "./shedule/shedule.component";
+import { ShowsComponent } from './components/shows/shows.component';
+import {SheduleComponent} from './components/shedule/shedule.component';
+import {ShowInfoComponent} from './components/show-info/show-info.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'shedule',
     component: SheduleComponent,
+  },
+  {
+    path: 'info',
+    component: ShowInfoComponent,
   },
   {
     path: '**',

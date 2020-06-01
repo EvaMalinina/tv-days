@@ -1,0 +1,37 @@
+<div class="info">
+  <div class="container">
+    <div class="info__wrapper">
+      <div class="info__banner">
+        <mat-card *ngFor="let show of data">
+          <div class="shows__img-wrap">
+            <img mat-card-image src="{{show.image.medium}}"
+                 alt="show banner"
+                 class="shows__img"
+            >
+          </div>
+
+          <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
+
+          <mat-card-content class="shows__info">
+                <span>
+                  {{show.language}}
+                </span>
+            <span>
+                  <mat-icon>star_half</mat-icon>{{ show.rating.average}}
+                </span>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="info__text" *ngFor="let show of data">
+        <h3>{{ show.name }}</h3>
+        <p>{{ show.summary }}</p>
+        <ul class="info__genres">
+          <li class="genres__item" *ngFor="let genre of show.genres">
+            {{ genre }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

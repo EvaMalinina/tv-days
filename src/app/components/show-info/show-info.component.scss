@@ -1,0 +1,48 @@
+@import "../../../variables";
+
+.info {
+  padding-top: 30px;
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__banner {
+    max-width: 280px;
+    margin-right: 15px;
+  }
+
+  &__text {
+    width: 55%;
+    padding: 10px;
+    color: $black;
+
+    h3 {
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__genres {
+    display: flex;
+    align-self: flex-end;
+  }
+}
+
+.genres__item {
+  margin-right: 10px;
+  border: 1px solid $black;
+  padding: 5px;
+  border-radius: 4px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

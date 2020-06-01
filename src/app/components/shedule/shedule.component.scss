@@ -1,0 +1,15 @@
+.shows-wrapper {
+  padding-top: 30px;
+}
+
+
+.shows {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+}

@@ -11,9 +11,9 @@
       <ng-container *ngIf="shows">
         <div *ngFor="let show of shows" [flickityChild]
              class="shows__item"
-             [ngClass]="show.isSeen ? 'seen' : 'notseen'"
-             (click)="seenChecked(this.show)">
-          <a href="#">
+             (click)="showInfo(this.show.id)"
+        >
+          <a href="#" >
             <mat-card>
               <div class="shows__img-wrap">
                 <img mat-card-image src="{{show.image.medium}}"
@@ -36,8 +36,6 @@
           </a>
         </div>
       </ng-container>
-
-
     </mat-selection-list>
   </div>
 
@@ -50,8 +48,8 @@
                                    pageDots: false,
                                    prevNextButtons: false}">
       <ng-container *ngIf="shows">
-        <div *ngFor="let show of checkedShowsStorage">
-          <div class="shows__item" *ngIf="show.isSeen" [flickityChild]>
+        <div *ngFor="let show of checkedShows">
+          <div class="shows__item" [flickityChild]>
             <a href="#"  >
               <mat-card>
                 <div class="shows__img-wrap">
@@ -74,7 +72,6 @@
               </mat-card>
             </a>
           </div>
-
         </div>
       </ng-container>
     </mat-selection-list>
@@ -90,7 +87,9 @@
                                    prevNextButtons: false}">
       <ng-container *ngIf="shows">
         <div *ngFor="let bestRateShow of bestRatesShows" [flickityChild]
-             class="shows__item">
+             class="shows__item"
+             (click)="showInfo(this.bestRateShow.id)"
+        >
           <mat-card>
             <div class="shows__img-wrap">
               <img mat-card-image src="{{bestRateShow.image.medium}}"
@@ -125,7 +124,9 @@
                                    pageDots: false,
                                    prevNextButtons: false}">
       <div *ngFor="let comedy of comedies" [flickityChild]
-           class="shows__item">
+           class="shows__item"
+           (click)="showInfo(this.comedy.id)"
+      >
         <mat-card>
           <div class="shows__img-wrap">
             <img mat-card-image src="{{comedy.image.medium}}"
@@ -159,7 +160,9 @@
                                    pageDots: false,
                                    prevNextButtons: false}">
       <div *ngFor="let drama of dramas" [flickityChild]
-           class="shows__item">
+           class="shows__item"
+           (click)="showInfo(this.drama.id)"
+      >
         <mat-card>
           <div class="shows__img-wrap">
             <img mat-card-image src="{{drama.image.medium}}"
@@ -193,7 +196,9 @@
                                    pageDots: false,
                                    prevNextButtons: false}">
       <div *ngFor="let thriller of thrillers" [flickityChild]
-           class="shows__item">
+           class="shows__item"
+           (click)="showInfo(this.thriller.id)"
+      >
         <mat-card>
           <div class="shows__img-wrap">
             <img mat-card-image src="{{thriller.image.medium}}"
@@ -227,7 +232,9 @@
                                    pageDots: false,
                                    prevNextButtons: false}">
       <div *ngFor="let action of actions" [flickityChild]
-           class="shows__item">
+           class="shows__item"
+           (click)="showInfo(this.action.id)"
+      >
         <mat-card>
           <div class="shows__img-wrap">
             <img mat-card-image src="{{action.image.medium}}"
