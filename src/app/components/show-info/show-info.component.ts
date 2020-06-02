@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 // import { Subscription } from 'rxjs';
 import { ShowService } from '../../Services/shows.service';
-import { IShow } from "../../Models/show.model";
+import { IShow } from '../../Models/show.model';
 
 @Component({
   selector: 'app-show-info',
@@ -17,7 +17,7 @@ export class ShowInfoComponent implements OnInit, OnDestroy {
   constructor( private showService: ShowService, ) { }
 
   ngOnInit(): void {
-    this.data = JSON.parse(localStorage.getItem("res"));
+    this.data = JSON.parse(localStorage.getItem('res'));
 
     // this.subscription = this.showService.showInfoSeenList.subscribe(res => {
       // const resArr = [res];

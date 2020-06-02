@@ -55,7 +55,7 @@ export class ShowService {
     this.http
       .get<IShow[]>(`${this.baseUrl}shows/${showId}`)
       .subscribe( res => {
-          let seenShows = [];
+          const seenShows = [];
           seenShows.push(res);
           localStorage.setItem('res', JSON.stringify(seenShows));
           // this.showInfoList.next(seenShows);
@@ -65,7 +65,7 @@ export class ShowService {
           if ( showsArr ) {
 
             // filter does not work
-            let newArr = showsArr.filter((show: IShow) => show.id !== showId);
+            const newArr = showsArr.filter((show: IShow) => show.id !== showId);
             newArr.push(res);
             console.log('checkedShowsStorage', newArr);
             localStorage.setItem('shows', JSON.stringify(newArr));
@@ -87,7 +87,7 @@ export class ShowService {
 
   sheduleShows() {
     return this.http
-      .get<ISheduledShow[]>(`${this.baseUrl}schedule/full`)
+      .get<ISheduledShow[]>(`${this.baseUrl}schedule/full`);
   }
 
   searchEntries(term) {

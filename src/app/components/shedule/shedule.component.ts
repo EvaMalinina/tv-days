@@ -24,6 +24,6 @@ export class SheduleComponent implements OnInit {
       },
       err => {
         console.log(err);
-      })
+      });
   }
 }

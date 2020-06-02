@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SheduleComponent } from './shedule.component';
+import { HttpClientModule } from "@angular/common/http";
 
 describe('SheduleComponent', () => {
   let component: SheduleComponent;
@@ -8,6 +8,7 @@ describe('SheduleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ HttpClientModule ],
       declarations: [ SheduleComponent ]
     })
     .compileComponents();
