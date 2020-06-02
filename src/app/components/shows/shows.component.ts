@@ -22,9 +22,9 @@ export class ShowsComponent implements OnInit, OnDestroy {
   actions: IShow[];
   bestRatesShows: IShow[];
   checkedShows: IShow[];
-  isSeen: boolean;
+  // isSeen: boolean;
   subscription: Subscription;
-  subscription2: Subscription;
+  // subscription2: Subscription;
   marker = false;
 
   constructor( private showService: ShowService, ) { }

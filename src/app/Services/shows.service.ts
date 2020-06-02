@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class ShowService {
-  baseUrl = 'http://api.tvmaze.com/';
+  baseUrl = 'https://api.tvmaze.com/';
   queryUrl = 'singlesearch/shows?q=';
   private moviesList: EventEmitter<IShow[]> = new EventEmitter<IShow[]>();
   // private sheduledMovieList: BehaviorSubject<ISheduledShow[]> = new BehaviorSubject<ISheduledShow[]>(null);
@@ -75,6 +75,7 @@ export class ShowService {
             showsArr.push(res);
             localStorage.setItem('shows', JSON.stringify(showsArr));
           }
+          this.router.navigate(['info']);
         },
         err => {
           console.log(err);
@@ -96,6 +97,12 @@ export class ShowService {
       .subscribe( res => {
         const resInArr = [res];
         this.moviesList.emit(resInArr);
+      },
+      () => {
+      alert('No show found, sorry...')
+      },
+      () => {
+        this.router.navigate(['']);
       });
   }
 }
