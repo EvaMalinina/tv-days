@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { ShowInfoComponent } from './show-info.component';
 
 describe('ShowInfoComponent', () => {
@@ -8,6 +8,7 @@ describe('ShowInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ HttpClientModule ],
       declarations: [ ShowInfoComponent ]
     })
     .compileComponents();

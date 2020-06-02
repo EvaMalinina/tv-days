@@ -9,7 +9,7 @@ import { ShowsComponent } from './components/shows/shows.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { FlickityModule } from 'ngx-flickity';
@@ -48,7 +48,7 @@ import { ArticlesComponent } from './components/articles/articles.component';
   providers: [
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    HttpClientModule
+    HttpClient,
   ],
   exports: [ HeaderComponent, FooterComponent, LoaderComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

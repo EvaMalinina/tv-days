@@ -3,13 +3,13 @@ import { ShowService } from '../../Services/shows.service';
 // import { Show } from '../../Models/show';
 import { IShow } from '../../Models/show.model';
 import { Subscription } from 'rxjs';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-shows',
   templateUrl: './shows.component.html',
   styleUrls: ['./shows.component.scss'],
-  providers: [ HttpClient ]
+  providers: [ HttpClientModule ]
   // encapsulation: ViewEncapsulation.None,
 })
 
