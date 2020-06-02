@@ -23,6 +23,7 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
 import { LoaderModule } from './components/loader/loader.module';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { LoaderModule } from './components/loader/loader.module';
     HeaderModule,
     FooterModule,
     LoaderModule,
+    RouterModule.forRoot([]),
   ],
   providers: [
     LoaderService,
@@ -58,6 +60,7 @@ import { LoaderModule } from './components/loader/loader.module';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
+
 })
 
 export class AppModule { }
