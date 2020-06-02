@@ -20,10 +20,13 @@ export class ShowInfoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('res'));
 
-    for (let show of this.data) {
-      let text = show.summary;
-      this.text = text.replace(/<\/?[^>]+(>|$)/g, "");
+    if ( this.data ) {
+      for (let show of this.data) {
+        let text = show.summary;
+        this.text = text.replace(/<\/?[^>]+(>|$)/g, "");
+      }
     }
+
     // this.subscription = this.showService.showInfoSeenList.subscribe(res => {
       // const resArr = [res];
       // this.data = resArr;
