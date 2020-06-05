@@ -4,7 +4,6 @@
       <ng-container *ngIf="scheduledShows">
         <div *ngFor="let show of scheduledShows"
              class="shows__item">
-          <a href="#">
             <mat-card>
 
               <mat-card-title class="shows__name">{{show.name}}</mat-card-title>
@@ -18,7 +17,6 @@
                 </span>
               </mat-card-content>
             </mat-card>
-          </a>
         </div>
       </ng-container>
 

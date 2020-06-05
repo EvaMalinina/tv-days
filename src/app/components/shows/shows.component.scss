@@ -64,12 +64,6 @@
 }
 
 .shows_seen {
-
-  .shows__item.notseen {
-    display: none;
-  }
-
-  .shows__item.seen {
-    display: flex;
-  }
+  display: flex;
+  max-width: 100%;
 }

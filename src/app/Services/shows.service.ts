@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { BehaviorSubject } from 'rxjs';
 import { Show } from '../Models/show';
 import { IShow } from '../Models/show.model';
 import { ISheduledShow } from '../Models/sheduled-show.model';
@@ -14,13 +13,6 @@ export class ShowService {
   baseUrl = 'https://api.tvmaze.com/';
   queryUrl = 'singlesearch/shows?q=';
   private moviesList: EventEmitter<IShow[]> = new EventEmitter<IShow[]>();
-  // private sheduledMovieList: BehaviorSubject<ISheduledShow[]> = new BehaviorSubject<ISheduledShow[]>(null);
-
-  // for seen film
-  // private showInfoList: BehaviorSubject<IShow[]> = new BehaviorSubject<IShow[]>(null);
-  // for arr of seen films
-  // private checkedShowsStorage: EventEmitter<IShow[]> = new EventEmitter<IShow[]>();
-
 
   constructor( private http: HttpClient,
                private route: ActivatedRoute,
@@ -29,18 +21,6 @@ export class ShowService {
   get lists() {
     return this.moviesList.asObservable();
   }
-  //
-  // get sheduledLists() {
-  //   return this.sheduledMovieList.asObservable();
-  // }
-
-  // get showInfoSeenList() {
-  //   return this.showInfoList.asObservable();
-  // }
-
-  // get showInfoSeenListArr() {
-  //   return this.checkedShowsStorage.asObservable();
-  // }
 
   listShows() {
     this.http
@@ -58,22 +38,17 @@ export class ShowService {
           const seenShows = [];
           seenShows.push(res);
           localStorage.setItem('res', JSON.stringify(seenShows));
-          // this.showInfoList.next(seenShows);
-          // this.checkedShowsStorage.emit(res);
 
           const showsArr = JSON.parse(localStorage.getItem('shows'));
           if ( showsArr ) {
 
-            // filter does not work
             const newArr = showsArr.filter((show: IShow) => show.id !== showId);
             newArr.push(res);
-            console.log('checkedShowsStorage', newArr);
             localStorage.setItem('shows', JSON.stringify(newArr));
-            // this.checkedShowsStorage.emit(newArr);
           } else {
-            const showsArr = [];
-            showsArr.push(res);
-            localStorage.setItem('shows', JSON.stringify(showsArr));
+            const showsAr = [];
+            showsAr.push(res);
+            localStorage.setItem('shows', JSON.stringify(showsAr));
           }
           this.router.navigate(['info']);
         },
@@ -99,7 +74,7 @@ export class ShowService {
         this.moviesList.emit(resInArr);
       },
       () => {
-      alert('No show found, sorry...')
+        console.log(`No show found, sorry...`);
       },
       () => {
         this.router.navigate(['']);

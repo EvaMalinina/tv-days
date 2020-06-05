@@ -1,26 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShowsComponent } from './components/shows/shows.component';
-import { SheduleComponent } from './components/shedule/shedule.component';
-import { ShowInfoComponent } from './components/show-info/show-info.component';
-import { ArticlesComponent } from './components/articles/articles.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ShowsComponent,
+  { path: '',
+    loadChildren: () => import('./components/shows/shows.module').then(m => m.ShowsModule)
   },
-  {
-    path: 'shedule',
-    component: SheduleComponent,
+  { path: 'info',
+    loadChildren: () => import('./components/show-info/shows-info.module').then(m => m.ShowInfoModule)
   },
-  {
-    path: 'info',
-    component: ShowInfoComponent,
+  { path: 'articles',
+    loadChildren: () => import('./components/articles/articles.module').then(m => m.ArticlesModule)
   },
-  {
-    path: 'articles',
-    component: ArticlesComponent,
+  { path: 'schedule',
+    loadChildren: () => import('./components/schedule/schedule.module').then(m => m.ScheduleModule)
   },
   {
     path: '**',

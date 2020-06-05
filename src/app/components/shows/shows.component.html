@@ -14,7 +14,6 @@
              class="shows__item"
              (click)="showInfo(this.show.id)"
         >
-          <a href="#" >
             <mat-card>
               <div class="shows__img-wrap">
                 <img mat-card-image src="{{show.image.medium}}"
@@ -34,7 +33,7 @@
                 </span>
               </mat-card-content>
             </mat-card>
-          </a>
+
         </div>
       </ng-container>
     </mat-selection-list>
@@ -43,16 +42,16 @@
   <div class="shows-wrapper">
     <h3>Recently viewed...</h3>
     <mat-selection-list class="shows shows_seen"
-                        [flickity]="{cellAlign: 'left',
+                        [flickity]="{
                                    freeScroll: true,
                                    wrapAround: true,
                                    pageDots: false,
-                                   prevNextButtons: false}">
+                                   prevNextButtons: false}"
+    >
       <ng-container *ngIf="shows">
         <div *ngFor="let show of checkedShows">
           <div class="shows__item" [flickityChild]>
-            <a href="#"  >
-              <mat-card>
+            <mat-card>
                 <div class="shows__img-wrap">
                   <img mat-card-image src="{{show.image.medium}}"
                        alt="show banner"
@@ -71,7 +70,6 @@
                 </span>
                 </mat-card-content>
               </mat-card>
-            </a>
           </div>
         </div>
       </ng-container>
@@ -112,7 +110,6 @@
           </mat-card>
         </div>
       </ng-container>
-
     </mat-selection-list>
   </div>
 
@@ -124,30 +121,33 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <div *ngFor="let comedy of comedies" [flickityChild]
-           class="shows__item"
-           (click)="showInfo(this.comedy.id)"
-      >
-        <mat-card>
-          <div class="shows__img-wrap">
-            <img mat-card-image src="{{comedy.image.medium}}"
-                 alt="show banner"
-                 class="shows__img"
-            >
-          </div>
+      <ng-container *ngIf="shows">
+        <div *ngFor="let comedy of comedies" [flickityChild]
+             class="shows__item"
+             (click)="showInfo(this.comedy.id)"
+        >
+          <mat-card>
+            <div class="shows__img-wrap">
+              <img mat-card-image src="{{comedy.image.medium}}"
+                   alt="show banner"
+                   class="shows__img"
+              >
+            </div>
 
-          <mat-card-title class="shows__name">{{comedy.name}}</mat-card-title>
+            <mat-card-title class="shows__name">{{comedy.name}}</mat-card-title>
 
-          <mat-card-content class="shows__info">
+            <mat-card-content class="shows__info">
           <span>
             {{comedy.language}}
           </span>
-            <span>
+              <span>
             <mat-icon>star_half</mat-icon>{{ comedy.rating.average}}
           </span>
-          </mat-card-content>
-        </mat-card>
-      </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
+
 
     </mat-selection-list>
   </div>
@@ -160,30 +160,33 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <div *ngFor="let drama of dramas" [flickityChild]
-           class="shows__item"
-           (click)="showInfo(this.drama.id)"
-      >
-        <mat-card>
-          <div class="shows__img-wrap">
-            <img mat-card-image src="{{drama.image.medium}}"
-                 alt="show banner"
-                 class="shows__img"
-            >
-          </div>
+      <ng-container *ngIf="shows">
+        <div *ngFor="let drama of dramas" [flickityChild]
+             class="shows__item"
+             (click)="showInfo(this.drama.id)"
+        >
+          <mat-card>
+            <div class="shows__img-wrap">
+              <img mat-card-image src="{{drama.image.medium}}"
+                   alt="show banner"
+                   class="shows__img"
+              >
+            </div>
 
-          <mat-card-title class="shows__name">{{drama.name}}</mat-card-title>
+            <mat-card-title class="shows__name">{{drama.name}}</mat-card-title>
 
-          <mat-card-content class="shows__info">
+            <mat-card-content class="shows__info">
           <span>
             {{drama.language}}
           </span>
-            <span>
+              <span>
             <mat-icon>star_half</mat-icon>{{ drama.rating.average}}
           </span>
-          </mat-card-content>
-        </mat-card>
-      </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
+
 
     </mat-selection-list>
   </div>
@@ -196,31 +199,32 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <div *ngFor="let thriller of thrillers" [flickityChild]
-           class="shows__item"
-           (click)="showInfo(this.thriller.id)"
-      >
-        <mat-card>
-          <div class="shows__img-wrap">
-            <img mat-card-image src="{{thriller.image.medium}}"
-                 alt="show banner"
-                 class="shows__img"
-            >
-          </div>
+      <ng-container *ngIf="shows">
+        <div *ngFor="let thriller of thrillers" [flickityChild]
+             class="shows__item"
+             (click)="showInfo(this.thriller.id)"
+        >
+          <mat-card>
+            <div class="shows__img-wrap">
+              <img mat-card-image src="{{thriller.image.medium}}"
+                   alt="show banner"
+                   class="shows__img"
+              >
+            </div>
 
-          <mat-card-title class="shows__name">{{thriller.name}}</mat-card-title>
+            <mat-card-title class="shows__name">{{thriller.name}}</mat-card-title>
 
-          <mat-card-content class="shows__info">
+            <mat-card-content class="shows__info">
           <span>
             {{thriller.language}}
           </span>
-            <span>
+              <span>
             <mat-icon>star_half</mat-icon>{{ thriller.rating.average}}
           </span>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
     </mat-selection-list>
   </div>
 
@@ -232,31 +236,32 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <div *ngFor="let action of actions" [flickityChild]
-           class="shows__item"
-           (click)="showInfo(this.action.id)"
-      >
-        <mat-card>
-          <div class="shows__img-wrap">
-            <img mat-card-image src="{{action.image.medium}}"
-                 alt="show banner"
-                 class="shows__img"
-            >
-          </div>
+      <ng-container *ngIf="shows">
+        <div *ngFor="let action of actions" [flickityChild]
+             class="shows__item"
+             (click)="showInfo(this.action.id)"
+        >
+          <mat-card>
+            <div class="shows__img-wrap">
+              <img mat-card-image src="{{action.image.medium}}"
+                   alt="show banner"
+                   class="shows__img"
+              >
+            </div>
 
-          <mat-card-title class="shows__name">{{action.name}}</mat-card-title>
+            <mat-card-title class="shows__name">{{action.name}}</mat-card-title>
 
-          <mat-card-content class="shows__info">
+            <mat-card-content class="shows__info">
           <span>
             {{action.language}}
           </span>
-            <span>
+              <span>
             <mat-icon>star_half</mat-icon>{{ action.rating.average}}
           </span>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
     </mat-selection-list>
   </div>
 </div>

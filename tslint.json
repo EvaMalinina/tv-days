@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "only-arrow-functions": false,
     "align": {
       "options": [
         "parameters",

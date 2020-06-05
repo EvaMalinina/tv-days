@@ -1,14 +1,14 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ShowService} from '../../Services/shows.service';
-import {ISheduledShow} from '../../Models/sheduled-show.model';
+import { Component, OnInit } from '@angular/core';
+import { ShowService } from '../../Services/shows.service';
+import { ISheduledShow } from '../../Models/sheduled-show.model';
 
 @Component({
   selector: 'app-shedule',
-  templateUrl: './shedule.component.html',
-  styleUrls: ['./shedule.component.scss']
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.scss']
 })
 
-export class SheduleComponent implements OnInit {
+export class ScheduleComponent implements OnInit {
 
   scheduledShows: ISheduledShow[];
 

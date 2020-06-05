@@ -1,6 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-// import { Subscription } from 'rxjs';
-import { ShowService } from '../../Services/shows.service';
+import { Component, OnInit } from '@angular/core';
 import { IShow } from '../../Models/show.model';
 
 @Component({
@@ -9,34 +7,19 @@ import { IShow } from '../../Models/show.model';
   styleUrls: ['./show-info.component.scss'],
 })
 
-export class ShowInfoComponent implements OnInit, OnDestroy {
+export class ShowInfoComponent implements OnInit {
 
-  // subscription: Subscription;
   data: IShow[];
   text: string;
-
-  constructor( private showService: ShowService, ) { }
 
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('res'));
 
     if ( this.data ) {
-      for (let show of this.data) {
-        let text = show.summary;
-        this.text = text.replace(/<\/?[^>]+(>|$)/g, "");
+      for (const show of this.data) {
+        const text = show.summary;
+        this.text = text.replace(/<\/?[^>]+(>|$)/g, '');
       }
     }
-
-    // this.subscription = this.showService.showInfoSeenList.subscribe(res => {
-      // const resArr = [res];
-      // this.data = resArr;
-    // },
-    //   ( err ) => {
-    //     console.log(err);
-    // });
-  }
-
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
   }
 }
