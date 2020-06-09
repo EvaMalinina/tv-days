@@ -56,47 +56,19 @@ export class ShowsComponent implements OnInit, OnDestroy {
   }
 
   listComedies() {
-    const comedies = this.shows.filter((el) => {
-      for (const genre of el.genres) {
-        if (genre === 'Comedy') {
-          return el;
-        }
-      }
-    });
-    this.comedies = comedies;
+    this.comedies = this.shows.filter((el) => el.genres.includes('Comedy'));
   }
 
   listDramas() {
-    const dramas = this.shows.filter((el) => {
-      for (const genre of el.genres) {
-        if (genre === 'Drama') {
-          return el;
-        }
-      }
-    });
-    this.dramas = dramas;
+    this.dramas = this.shows.filter((el) => el.genres.includes('Drama'));
   }
 
   listThrillers() {
-    const thrillers = this.shows.filter((el) => {
-      for (const genre of el.genres) {
-        if (genre === 'Thriller') {
-          return el;
-        }
-      }
-    });
-    this.thrillers = thrillers;
+    this.thrillers = this.shows.filter((el) => el.genres.includes('Thriller'));
   }
 
   listActions() {
-    const actions = this.shows.filter((el) => {
-      for (const genre of el.genres) {
-        if (genre === 'Action') {
-          return el;
-        }
-      }
-    });
-    this.actions = actions;
+    this.actions = this.shows.filter((el) => el.genres.includes('Action'));
   }
 
   showInfo(showId) {
