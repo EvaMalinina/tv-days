@@ -73,8 +73,10 @@ export class ShowService {
         const resInArr = [res];
         this.moviesList.emit(resInArr);
       },
-      () => {
-        console.log(`No show found, sorry...`);
+      (err) => {
+        alert(`
+        No show found, sorry...
+        ${err.message}`)
       },
       () => {
         this.router.navigate(['']);

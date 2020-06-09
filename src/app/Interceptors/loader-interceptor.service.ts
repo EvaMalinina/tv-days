@@ -38,7 +38,6 @@ export class LoaderInterceptor implements HttpInterceptor {
             }
           },
           err => {
-            alert('The error has been occurred during API request:' + err);
             this.removeRequest(req);
             observer.error(err);
           },
