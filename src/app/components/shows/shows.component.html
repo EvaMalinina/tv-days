@@ -41,17 +41,12 @@
 
   <div class="shows-wrapper">
     <h3>Recently viewed...</h3>
-    <mat-selection-list class="shows shows_seen"
-                        [flickity]="{
-                                   freeScroll: true,
-                                   wrapAround: true,
-                                   pageDots: false,
-                                   prevNextButtons: false}"
-    >
+    <mat-selection-list class="shows">
       <ng-container *ngIf="shows">
-        <div *ngFor="let show of checkedShows">
-          <div class="shows__item" [flickityChild]>
-            <mat-card>
+        <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="200" class="example-viewport">
+          <div *ngFor="let show of checkedShows">
+            <div class="shows__item">
+              <mat-card>
                 <div class="shows__img-wrap">
                   <img mat-card-image src="{{show.image.medium}}"
                        alt="show banner"
@@ -70,8 +65,9 @@
                 </span>
                 </mat-card-content>
               </mat-card>
+            </div>
           </div>
-        </div>
+        </cdk-virtual-scroll-viewport>
       </ng-container>
     </mat-selection-list>
   </div>

@@ -9,17 +9,15 @@ import { IShow } from '../../Models/show.model';
 
 export class ShowInfoComponent implements OnInit {
 
-  data: IShow[];
+  data: IShow;
   text: string;
 
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('res'));
 
     if ( this.data ) {
-      for (const show of this.data) {
-        const text = show.summary;
-        this.text = text.replace(/<\/?[^>]+(>|$)/g, '');
-      }
+      const text = this.data.summary;
+      this.text = text.replace(/<\/?[^>]+(>|$)/g, '');
     }
   }
 }

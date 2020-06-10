@@ -64,7 +64,14 @@
   margin: 0;
 }
 
-.shows_seen {
-  display: flex;
-  max-width: 100%;
+.shows-wrapper .example-viewport {
+  height: 100%;
+  width: 100%;
+  min-height: 335px;
 }
+
+.shows-wrapper .example-viewport .cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+

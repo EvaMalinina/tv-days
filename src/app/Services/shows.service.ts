@@ -35,9 +35,8 @@ export class ShowService {
     this.http
       .get<IShow[]>(`${this.baseUrl}shows/${showId}`)
       .subscribe( res => {
-          const seenShows = [];
-          seenShows.push(res);
-          localStorage.setItem('res', JSON.stringify(seenShows));
+
+          localStorage.setItem('res', JSON.stringify(res));
 
           const showsArr = JSON.parse(localStorage.getItem('shows'));
           if ( showsArr ) {
