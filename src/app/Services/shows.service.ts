@@ -75,7 +75,7 @@ export class ShowService {
       (err) => {
         alert(`
         No show found, sorry...
-        ${err.message}`)
+        ${err.message}`);
       },
       () => {
         this.router.navigate(['']);

@@ -13,13 +13,10 @@ import { FlickityModule } from 'ngx-flickity';
 import { MatInputModule } from '@angular/material/input';
 import { LoaderService } from './Services/loader.service';
 import { LoaderInterceptor } from './Interceptors/loader-interceptor.service';
-// import { HeaderModule } from './components/header/header.module';
-// import { FooterModule } from './components/footer/footer.module';
-// import { LoaderModule } from './components/loader/loader.module';
 import { RouterModule } from '@angular/router';
-import {HeaderComponent} from "./components/header/header.component";
-import {FooterComponent} from "./components/footer/footer.component";
-import {LoaderComponent} from "./components/loader/loader.component";
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -40,9 +37,6 @@ import {LoaderComponent} from "./components/loader/loader.component";
     FormsModule,
     FlickityModule,
     MatInputModule,
-    // HeaderModule,
-    // FooterModule,
-    // LoaderModule,
     RouterModule.forRoot([]),
   ],
   providers: [

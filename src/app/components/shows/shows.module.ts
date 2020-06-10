@@ -6,7 +6,7 @@ import { ShowsRoutingModule } from './shows-routing.module';
 import { ShowsComponent } from './shows.component';
 import { FlickityModule } from 'ngx-flickity';
 import { MatIconModule } from '@angular/material/icon';
-import {ScrollingModule} from "@angular/cdk/scrolling";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
