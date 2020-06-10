@@ -42,7 +42,7 @@
   <div class="shows-wrapper">
     <h3>Recently viewed...</h3>
     <mat-selection-list class="shows">
-      <ng-container *ngIf="shows">
+      <ng-container *ngIf="checkedShows">
         <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="200" class="example-viewport">
           <div *ngFor="let show of checkedShows">
             <div class="shows__item">
@@ -80,7 +80,7 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <ng-container *ngIf="shows">
+      <ng-container *ngIf="bestRatesShows">
         <div *ngFor="let bestRateShow of bestRatesShows" [flickityChild]
              class="shows__item"
              (click)="showInfo(this.bestRateShow.id)"
@@ -117,7 +117,7 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <ng-container *ngIf="shows">
+      <ng-container *ngIf="comedies">
         <div *ngFor="let comedy of comedies" [flickityChild]
              class="shows__item"
              (click)="showInfo(this.comedy.id)"
@@ -156,7 +156,7 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <ng-container *ngIf="shows">
+      <ng-container *ngIf="dramas">
         <div *ngFor="let drama of dramas" [flickityChild]
              class="shows__item"
              (click)="showInfo(this.drama.id)"
@@ -195,7 +195,7 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <ng-container *ngIf="shows">
+      <ng-container *ngIf="thrillers">
         <div *ngFor="let thriller of thrillers" [flickityChild]
              class="shows__item"
              (click)="showInfo(this.thriller.id)"
@@ -232,7 +232,7 @@
                                    wrapAround: true,
                                    pageDots: false,
                                    prevNextButtons: false}">
-      <ng-container *ngIf="shows">
+      <ng-container *ngIf="actions">
         <div *ngFor="let action of actions" [flickityChild]
              class="shows__item"
              (click)="showInfo(this.action.id)"
