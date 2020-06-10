@@ -4,27 +4,27 @@
       <div class="info__banner">
         <mat-card>
           <div class="shows__img-wrap">
-            <img mat-card-image src="{{data.image.medium}}"
+            <img mat-card-image src="{{ this.data.image.medium }}"
                  alt="show banner"
                  class="shows__img"
             >
           </div>
 
-          <mat-card-title class="shows__name">{{data.name}}</mat-card-title>
+          <mat-card-title class="shows__name">{{ this.data.name }}</mat-card-title>
 
           <mat-card-content class="shows__info">
                 <span>
-                  {{data.language}}
+                  {{ this.data.language }}
                 </span>
             <span>
-                  <mat-icon>star_half</mat-icon>{{ data.rating.average}}
+                  <mat-icon>star_half</mat-icon>{{ this.data.rating.average }}
                 </span>
           </mat-card-content>
         </mat-card>
       </div>
       <div class="info__text">
-        <h3>{{ data.name }}</h3>
-        <p>{{ text }}</p>
+        <h3>{{ this.data.name }}</h3>
+        <p>{{ this.text }}</p>
         <ul class="info__genres">
           <li class="genres__item" *ngFor="let genre of data.genres">
             {{ genre }}

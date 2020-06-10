@@ -9,8 +9,8 @@ import { IShow } from '../../Models/show.model';
 
 export class ShowInfoComponent implements OnInit {
 
-  data: IShow;
-  text: string;
+  public data: IShow;
+  public text: string;
 
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('res'));
